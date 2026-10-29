@@ -1,0 +1,15 @@
+[Unit]
+Description=Aether AI FastAPI backend
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/projects/Aether/server
+Environment=HOST=127.0.0.1
+Environment=PORT=8765
+ExecStart=%h/projects/Aether/server/run.sh
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,14 @@
+server/.venv/
+server/**/__pycache__/
+mobile/node_modules/
+mobile/dist/
+mobile/.expo/
+*.pyc
+.DS_Store
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*.json
+firebase-adminsdk*.json

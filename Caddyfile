@@ -1,0 +1,19 @@
+{
+	auto_https off
+	admin off
+}
+
+http://127.0.0.1:3000 {
+	bind 127.0.0.1
+	root * {$AETHER_WEB_ROOT}
+
+	@backend path /health /api/* /ws/*
+	handle @backend {
+		reverse_proxy 127.0.0.1:8765
+	}
+
+	handle {
+		try_files {path} /index.html
+		file_server
+	}
+}

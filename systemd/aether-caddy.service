@@ -1,0 +1,15 @@
+[Unit]
+Description=Aether AI local Caddy proxy
+After=aether-backend.service
+Requires=aether-backend.service
+
+[Service]
+Type=simple
+WorkingDirectory=%h/projects/Aether
+Environment=AETHER_WEB_ROOT=%h/projects/Aether/mobile/dist
+ExecStart=/usr/bin/caddy run --config %h/projects/Aether/Caddyfile --adapter caddyfile
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

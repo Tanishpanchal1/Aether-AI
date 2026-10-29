@@ -6,7 +6,7 @@ Three small apps share one workflow:
 - `pc/` — `launch_opencode.sh`, which opens a terminal in `Aether ai testing/` and starts `opencode`.
 - `mobile/` — Expo React Native UI, also runnable on the web, mirroring the server PTY over WebSocket.
 
-## Run
+## Local development
 
 ```bash
 cd server
@@ -16,7 +16,7 @@ pip install -r requirements.txt
 ./run.sh
 ```
 
-The server and mobile/web client use port `8765` by default. Override the server with `PORT=8766 ./run.sh` when needed.
+The backend listens on `127.0.0.1:8765` by default. Override the bind port with `PORT=8766 ./run.sh` when needed.
 
 In another terminal:
 
@@ -30,4 +30,11 @@ For the UI, install Node dependencies in `mobile/` and run `npm run web` or `npm
 EXPO_PUBLIC_SERVER_URL=http://<your-computer-lan-ip>:8765 npm start
 ```
 
-The server creates and uses only `Aether ai testing/` as its working directory. The current policy blocks parent/absolute paths, directory changes, and destructive privileged commands. This is an application boundary for development; production use should additionally run OpenCode in an OS-level sandbox/container.
+The server creates and uses only `Aether ai testing/` as its working directory. The current policy blocks parent/absolute paths, directory changes, and destructive privileged commands. Interactive OpenCode mode bypasses that line-level policy, so it is not a security sandbox.
+
+## Private remote hosting
+
+See [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) for the Caddy, Expo export, Garuda,
+Tailscale Serve, startup/shutdown, systemd user-service, troubleshooting, and
+security follow-up instructions. The supported remote path is Tailscale Serve;
+Tailscale Funnel and public router ports are not used.

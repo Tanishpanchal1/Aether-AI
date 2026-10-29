@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "name": "Aether AI",
+    "slug": "aether-ai",
+    "version": "0.1.0",
+    "web": {
+      "bundler": "metro"
+    },
+    "android": {
+      "package": "com.anonymous.aetherai"
+    }
+  }
+}
